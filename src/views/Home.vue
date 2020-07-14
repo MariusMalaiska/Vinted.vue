@@ -1,18 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <home-hero />
+    <!-- <home-item-row /> -->
+    <home-items :items="items" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HomeHero from "@/components/home/HomeHero.vue";
+import HomeItems from "@/components/home/HomeItems.vue";
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    HomeHero,
+    HomeItems
+  },
+  computed: {
+    ...mapGetters({
+      items: "homeItems"
+    })
   }
-}
+};
 </script>
+
+<style lang="scss">
+</style>
