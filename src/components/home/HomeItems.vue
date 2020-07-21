@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
     <card-item
-      v-for="{id, img, price, size, height, width, brand} in items"
+      v-for="{ id, img, price, size, height, width, brand } in items"
       :key="id"
       :img="img"
       :id="id"
@@ -24,12 +24,17 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .grid {
   margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: 240px;
-  gap: 1rem;
+  display: flex;
+  // justify-content: space-between;
+  flex-wrap: wrap;
+
+  // margin-top: 2rem;
+  // display: grid;
+  // grid-template-columns: repeat(5, 1fr);
+  // grid-auto-rows: 240px;
+  // gap: 1rem;
 }
 </style>

@@ -4,21 +4,22 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/todo-list">Todo List</router-link>
-    </div> -->
+    </div>-->
     <navbar-main />
-    <router-view/>
+    <navbar-following />
+    <router-view />
   </div>
 </template>
 
-
 <script>
-import NavbarMain from '@/components/partials/NavbarMain.vue'
-
+import NavbarMain from "@/components/partials/NavbarMain.vue";
+import NavbarFollowing from "@/components/partials/NavbarFollowing.vue";
 export default {
   components: {
+    NavbarFollowing,
     NavbarMain
   }
-}
+};
 </script>
 
 <style lang="scss">

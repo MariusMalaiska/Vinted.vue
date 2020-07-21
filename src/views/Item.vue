@@ -2,51 +2,94 @@
   <div class="single__item">
     <div class="container">
       <div class="single__item__container">
-        <div class="item__photos__container col-8">
-          <img v-bind:src="item.img" class="card-img-top main__img img" alt="..." />
+        <!-- =1 Veikia -->
+        <div class="item__photos__container col-8" v-if="item.img.length === 1">
+          <img v-bind:src="item.img[0]" class="card-img-top main__img img" alt="..." />
+        </div>
+        <!-- =2 Veikia -->
+        <div class="item__photos__container col-8" v-else-if="item.img.length === 2">
+          <img v-bind:src="item.img[0]" class="card-img-top main__img img" alt="..." />
+          <div class="item__photo__right">
+            <img v-bind:src="item.img[1]" class="card-img-top second__img img" alt="..." />
+          </div>
+        </div>
+        <!-- =3 Veikia -->
+        <div class="item__photos__container col-8" v-else-if="item.img.length === 3">
+          <img v-bind:src="item.img[0]" class="card-img-top main__img img" alt="..." />
           <div class="item__photos__right">
-            <img v-bind:src="item.img" class="img__top img" alt="..." />
+            <img v-bind:src="item.img[1]" class="img__top img" alt="..." />
             <div class="item__photos__right__bottom">
-              <img v-bind:src="item.img" class="img__bottom img" alt="..." />
-              <img v-bind:src="item.img" class="img__bottom img" alt="..." />
+              <img v-bind:src="item.img[2]" class="third-img img" alt="..." />
             </div>
           </div>
         </div>
+        <!-- =4 Veikia -->
+        <div class="item__photos__container col-8" v-else-if="item.img.length === 4">
+          <img v-bind:src="item.img[0]" class="card-img-top main__img img" alt="..." />
+          <div class="item__photos__right">
+            <img v-bind:src="item.img[1]" class="img__top img" alt="..." />
+            <div class="item__photos__right__bottom">
+              <img v-bind:src="item.img[2]" class="img__bottom img" alt="..." />
+              <img v-bind:src="item.img[3]" class="img__bottom img" alt="..." />
+            </div>
+          </div>
+        </div>
+        <!-- >=5 Veikia -->
+        <div class="item__photos__container col-8" v-else-if="item.img.length >= 5">
+          <img v-bind:src="item.img[0]" class="card-img-top main__img img" alt="..." />
+          <div class="item__photos__right">
+            <div class="item__photos__right__two">
+              <img v-bind:src="item.img[1]" class="img__top__two img" alt="..." />
+              <img v-bind:src="item.img[2]" class="img__top__two img" alt="..." />
+            </div>
+            <div class="item__photos__right__bottom">
+              <img v-bind:src="item.img[3]" class="img__bottom img" alt="..." />
+              <div
+                class="img__overlayed"
+                :class="{'img__more': imgCount > 5}"
+                :imgCount-msg="imgCount - 5"
+              >
+                <img v-bind:src="item.img[4]" class="img__bottom overlayed img" alt="..." />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
         <div class="single__item__info col-4">
           <div class="details__list">
-            <h3 class="price">{{item.price}} €</h3>
+            <h3 class="price">{{ item.price }} €</h3>
             <div class="details__list__line"></div>
             <div class="details__list__details">
               <p class="details__list__title">PREKĖS ŽENKLAS</p>
-              <p>{{item.brand}}</p>
+              <p>{{ item.brand }}</p>
             </div>
             <div class="details__list__details">
               <p class="details__list__title">DYDIS</p>
-              <p>{{item.size}}</p>
+              <p>{{ item.size }}</p>
             </div>
             <div class="details__list__details">
               <p class="details__list__title">BŪKLĖ</p>
-              <p>{{item.condition}}</p>
+              <p>{{ item.condition }}</p>
             </div>
             <div class="details__list__details">
               <p class="details__list__title">SPALVA</p>
-              <p>{{item.color}}</p>
+              <p>{{ item.color }}</p>
             </div>
             <div class="details__list__details">
               <p class="details__list__title">VIETOVĖ</p>
-              <p>{{item.city}}</p>
+              <p>{{ item.city }}</p>
             </div>
             <div class="details__list__details">
               <p class="details__list__title">PERŽIŪRĖTA</p>
-              <p>{{item.views}}</p>
+              <p>{{ item.views }}</p>
             </div>
             <div class="details__list__details">
               <p class="details__list__title">ĮKELTA</p>
-              <p>{{item.date}}</p>
+              <p>{{ item.date }}</p>
             </div>
             <div class="details__list__line"></div>
-            <h3>{{item.title}}</h3>
-            <p>{{item.about}}</p>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.about }}</p>
             <div class="details__list__buttons">
               <button type="button" class="btn btn__contact">Teirautis</button>
               <button type="button" class="btn btn__remember">Pažymėti</button>
@@ -55,18 +98,18 @@
           <div class="user__box">
             <img v-bind:src="user.img" class="user__img" alt="..." />
             <div class="user__info">
-              <h4>{{user.username}}</h4>
+              <h4>{{ user.username }}</h4>
             </div>
           </div>
           <div class="user__info__box">
             <div class="user__info">
               <div class="details__list__details">
                 <p class="details__list__title">VIETOVĖ</p>
-                <p>{{user.city}}</p>
+                <p>{{ user.city }}</p>
               </div>
               <div class="details__list__details">
                 <p class="details__list__title">Paskutinis prisijungimas:</p>
-                <p>{{user.loginDate}}</p>
+                <p>{{ user.loginDate }}</p>
               </div>
             </div>
           </div>
@@ -77,6 +120,8 @@
 </template>
 
 <script>
+// import { mapGetters } from "vuex";
+
 export default {
   props: ["id", "img", "price", "size", "height", "width", "brand", "username"],
   created() {
@@ -84,16 +129,19 @@ export default {
   },
   computed: {
     item() {
-      return this.$store.getters.getItemById(this.id);
+      return this.$store.getters["shop/getItemById"](this.id);
     },
     user() {
-      return this.$store.getters.getUserById(this.id);
+      return this.$store.getters["shop/getUserById"](this.id);
+    },
+    imgCount() {
+      return this.$store.getters["shop/getItemById"](this.id).img.length;
     }
   }
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .single__item {
   background-color: #eaedee;
   min-height: 1000px;
@@ -120,6 +168,22 @@ export default {
         height: 100%;
         width: 50%;
       }
+
+      .second__img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+      .item__photos__right__two {
+        display: flex;
+        height: 50%;
+        width: 50%;
+        .img__top__two {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+      }
       .item__photos__right {
         display: flex;
         flex-direction: column;
@@ -130,15 +194,55 @@ export default {
           height: 50%;
           width: 100%;
         }
+
         .item__photos__right__bottom {
           display: flex;
           flex-direction: row;
           height: 50%;
           width: 100%;
+          .third-img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
           .img__bottom {
             object-fit: cover;
             height: 100%;
             width: 50%;
+
+            &__overlayed {
+              width: 100%;
+            }
+          }
+          .overlayed {
+            width: 100%;
+          }
+          .img__more {
+            position: relative;
+            height: 100%;
+
+            &:before {
+              content: "+" attr(imgCount-msg);
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: 5;
+              color: white;
+              font-size: 4rem;
+              font-weight: bold;
+              transform: translate(0, 30%);
+            }
+            &:after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: rgba($gray-100, 0.4);
+            }
           }
         }
       }

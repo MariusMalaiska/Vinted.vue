@@ -14,6 +14,7 @@
 <style lang="scss" scoped>
 .hero {
   display: flex;
+
   justify-content: space-between;
   &__content {
     display: flex;
@@ -25,6 +26,8 @@
     .btn {
       align-self: start;
       margin-top: 2rem;
+      background-color: $green;
+      color: $white;
     }
   }
   &__bg {

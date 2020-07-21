@@ -17,9 +17,14 @@ export default {
     HomeHero,
     HomeItems
   },
+  // computed: {
+  //   ...mapGetters({
+  //     items: "homeItems"
+  //   })
+  // }
   computed: {
     ...mapGetters({
-      items: "homeItems"
+      items: "shop/getHomeItems"
     })
   }
 };
